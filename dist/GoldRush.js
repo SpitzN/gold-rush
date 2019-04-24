@@ -12,8 +12,40 @@ class GoldRush extends Matrix {
         return player1, player2
     }
 
-    movePlayer(player, direction)
-    
+    movePlayer(player, direction){
+        let coord = super.findCoordinate(player)
+        console.log(coord)
+        
+        if(direction === 'down'){
+            this.alter(coord.y + 1, coord.x, player)
+        } else if(direction === 'up'){
+            this.alter(coord.y - 1, coord.x, player)
+        } else if(direction === 'left'){
+            this.alter(coord.y, coord.x - 1, player)
+        } else if(direction === 'right'){
+            this.alter(coord.y, coord.x + 1, player)
+        }   
+        this.alter(coord.y,coord.x, '.')
+    }
+
+    generateCoins(){
+        let coordX = Math.floor(Math.random() * rowNum)
+        let coordY = Math.floor(Math.random() * colNum)
+        let newCoin = this.alter(coordX, coordY, 'c')
+
+        
+
+    }
+
+    // moveIsLegal(){
+
+    // }
+
+    // checkScoreAfterMove(){
+
+    // }
+
+
 }
 
 

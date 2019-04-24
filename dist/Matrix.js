@@ -48,13 +48,12 @@ class Matrix {
         for (let i = 0; i < this.matrix.length; i++) {
             for (let j = 0; j < this.matrix[i].length; j++) {
                 if (this.matrix[i][j] === value) {
-                    coordinate = { x: j, y: i }
+                    coordinate = { x: j, y: i }   
                 }
             }
         }
-        console.log(coordinate);
+        return(coordinate);
     }
-
 };
 
 // module.exports = Matrix
