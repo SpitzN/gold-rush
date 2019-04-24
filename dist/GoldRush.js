@@ -5,30 +5,43 @@ class GoldRush extends Matrix {
         super(rowNum, colNum)
         this.generatePlayers(rowNum, colNum)
         this.generateCoins(rowNum, colNum)
+        this.generateBlocks(rowNum, colNum)
     }
 
     generatePlayers(rowNum, colNum) {
-        let player1 = super.alter(0, 0, 1)
-        let player2 = super.alter(rowNum - 1, colNum - 1, 2)
-        return player1, player2
+        let p1 = super.alter(0, 0, 1)
+        let p2 = super.alter(rowNum - 1, colNum - 1, 2)
+        return p1, p2
     }
 
-    generateCoins(rowNum, colNum) {
-        for (let coin = 0; coin < Math.floor((rowNum * colNum) / 2); coin++) {
+    createRandomItem(item, maxItems, rowNum, colNum, value){
+        while(item < maxItems) {
             let coordX = Math.floor(Math.random() * rowNum)
             let coordY = Math.floor(Math.random() * colNum)
-
-            if (this.getMatrix(coordX, coordY) === '.') {
-                this.alter(coordX, coordY, 'c')
-            } else {
-                coin--
+            let inspectCoord = this.getMatrix(coordX, coordY)
+            if (inspectCoord === '.') {
+                this.alter(coordX, coordY, value)
+                item++
             }
         }
     }
 
+    generateCoins(rowNum, colNum){
+        let coin = 0
+        let maxCoins = Math.floor((rowNum * colNum) / 2)
+        let value = 'c'
+        this.createRandomItem(coin, maxCoins, rowNum, colNum, value)
+    }
+
+    generateBlocks(rowNum, colNum){
+        let block = 0
+        let maxBlocks = Math.floor((rowNum * colNum) / 4)
+        let value = 'b'
+        this.createRandomItem(block, maxBlocks, rowNum, colNum, value)
+    }
+
     movePlayer(player, direction) {
         let coord = super.findCoordinate(player)
-        console.log(coord)
 
         if (direction === 'down') {
             this.alter(coord.y + 1, coord.x, player)
@@ -42,18 +55,11 @@ class GoldRush extends Matrix {
         this.alter(coord.y, coord.x, '.')
     }
 
-
-
-    // moveIsLegal(){
+}
+        // moveIsLegal(){
 
     // }
 
     // checkScoreAfterMove(){
 
     // }
-
-
-}
-
-
-// module.exports = GoldRush
