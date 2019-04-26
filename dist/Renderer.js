@@ -14,10 +14,12 @@ class Renderer {
         }
     }
 
+    renderScores(gameBoard) {
+        $('#score').empty()
+        $('#score').append(`<div class='score-box'><div class='player1-score'>Player 1: ${gameBoard.player1.score}</div></div>`)
+        $('#score').append(`<div class='score-box'><div class='player2-score'>Player 2: ${gameBoard.player2.score}</div></div>`)
 
-    // renderScores(score) {
-
-    // }
+    }
 
     fetchCellClass(value) {
         switch (value) {

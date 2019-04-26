@@ -64,5 +64,23 @@ body{
     display: block;
 }
 
+#score{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+}
+
+.score-box{
+    display: grid;
+    place-items: center;
+}
+
+.player1-score{
+
+}
+
+.player2-score{
+
+}
 
 
