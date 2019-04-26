@@ -1,23 +1,76 @@
 
-let board = new GoldRush(5,5)
+// const board = new GoldRush(5,5)
+const renderer = new Renderer()
 
-// console.log(board);
+const startGame = function() {
+   const rowNum = $('#rows').val()
+   const colNum = $('#cols').val()
+   const gameBoard = new GoldRush(rowNum, colNum)
+   renderer.renderBoard(gameBoard)
 
-board.print()
+   $(document).keydown(function (event){
+      if (event.code == 'KeyS') {
+         gameBoard.movePlayer(1, 'down')
+         renderer.renderBoard(gameBoard)
 
-// board.print()
-// board.movePlayer(2, "left")
-// board.movePlayer(2, "up")
-// board.print()
+       }
+   })   
 
-// console.log(board.getMatrix(0,1));
-// console.log(board.getMatrix(1,0));
-console.log(board.player1.score)
-console.log(board.moveValue(1, "down"));
-board.movePlayer(1, "down")
-board.print()
-console.log(board.player1.score)
-console.log(board.player1.score)
-// console.log(board.checkScoreAfterMove(1, 'down'));
+   $(document).keydown(function (event){
+      if (event.code == 'KeyW') {
+         gameBoard.movePlayer(1, 'up')
+         renderer.renderBoard(gameBoard)
 
-// console.log(board.moveValue(2, "up"));
+       }
+   })   
+
+   $(document).keydown(function (event){
+      if (event.code == 'KeyA') {
+         gameBoard.movePlayer(1, 'left')
+         renderer.renderBoard(gameBoard)
+
+       }
+   })   
+
+   $(document).keydown(function (event){
+      if (event.code == 'KeyD') {
+         gameBoard.movePlayer(1, 'right')
+         renderer.renderBoard(gameBoard)
+
+       }
+   })   
+
+   $(document).keydown(function (event){
+      if (event.code == 'KeyK') {
+         gameBoard.movePlayer(2, 'down')
+         renderer.renderBoard(gameBoard)
+
+       }
+   })   
+
+   $(document).keydown(function (event){
+      if (event.code == 'KeyI') {
+         gameBoard.movePlayer(2, 'up')
+         renderer.renderBoard(gameBoard)
+
+       }
+   })   
+
+   $(document).keydown(function (event){
+      if (event.code == 'KeyJ') {
+         gameBoard.movePlayer(2, 'left')
+         renderer.renderBoard(gameBoard)
+
+       }
+   })  
+
+   $(document).keydown(function (event){
+      if (event.code == 'KeyL') {
+         gameBoard.movePlayer(2, 'right')
+         renderer.renderBoard(gameBoard)
+
+       }
+   })  
+
+}
+

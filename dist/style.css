@@ -1,0 +1,68 @@
+
+body{
+
+}
+
+.container{
+    display: grid;
+    place-items: center;
+    margin-left: 10%;
+    max-width: 80%;
+}
+
+#main {
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
+
+#game-board {
+    background-color: rgb(22, 22, 202);
+    margin-left: 10%;
+    max-width: 80%;
+
+}
+
+.box{
+    background-color: rgb(22, 22, 202);
+    width: 100%;
+    display: grid;
+    min-height: 30px;
+    border: 1px, solid black;
+    place-items: center;
+}
+
+.player1{
+    border-radius: 50%;
+    background-color: rgb(25, 187, 25);
+    height: 20px;
+    width: 20px;
+}
+
+.player2{
+    border-radius: 50%;
+    background-color: rgb(201, 27, 27);
+    height: 20px;
+    width: 20px;
+}
+
+.coin{
+    border-radius: 50%;
+    background-color: gold;
+    height: 20%;
+    width: 10%;
+}
+
+.block{
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: black;
+}
+
+#footer{
+    display: block;
+}
+
+
+

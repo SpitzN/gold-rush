@@ -3,6 +3,8 @@
 class GoldRush extends Matrix {
     constructor(rowNum, colNum) {
         super(rowNum, colNum)
+        // this.rowNum = rowNum
+        // this.colNum = colNum
         this.runGame(rowNum, colNum)
         this.player1 = { _id: 1, score: 0 }
         this.player2 = { _id: 2, score: 0 }
@@ -15,9 +17,8 @@ class GoldRush extends Matrix {
     }
 
     generatePlayers(rowNum, colNum) {
-        let p1 = this.alter(0, 0, 1)
-        let p2 = this.alter(rowNum - 1, colNum - 1, 2)
-        return p1, p2
+        this.alter(0, 0, 1)
+        this.alter(rowNum - 1, colNum - 1, 2)
     }
 
     createRandomItem(item, maxItems, rowNum, colNum, value) {
