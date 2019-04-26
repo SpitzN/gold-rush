@@ -5,4 +5,8 @@ class Renderer {
     renderBoard(){
         
     }
+
+    renderScores(){
+        
+    } 
 }
