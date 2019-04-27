@@ -10,7 +10,7 @@ class GoldRush extends Matrix {
         this.player2 = { _id: 2, score: 0 }
     }
 
-    runGame(rowNum, colNum){
+    runGame(rowNum, colNum) {
         this.generatePlayers(rowNum, colNum)
         this.generateCoins(rowNum, colNum)
         this.generateBlocks(rowNum, colNum)
@@ -25,7 +25,7 @@ class GoldRush extends Matrix {
         while (item < maxItems) {
             let coordY = Math.floor(Math.random() * rowNum)
             let coordX = Math.floor(Math.random() * colNum)
-            let inspectCoord = this.getMatrix(coordY, coordX)
+            let inspectCoord = this.getMatrixCell(coordY, coordX)
             if (inspectCoord === '.') {
                 this.alter(coordY, coordX, value)
                 item++
@@ -47,46 +47,54 @@ class GoldRush extends Matrix {
         this.createRandomItem(block, maxBlocks, rowNum, colNum, value)
     }
 
-
-
     movePlayer(player, direction) {
         let coord = super.findCoordinate(player)
-        this.checkMoveValue(player, direction)
-        if (direction === 'down') {
-            this.alter(coord.y + 1, coord.x, player)
-        } else if (direction === 'up') {
-            this.alter(coord.y - 1, coord.x, player)
-        } else if (direction === 'left') {
-            this.alter(coord.y, coord.x - 1, player)
-        } else if (direction === 'right') {
-            this.alter(coord.y, coord.x + 1, player)
+        if (this.checkBoundries(player, direction)) {
+            this.checkCellValue(player, direction)
+            if (direction === 'down') {
+                this.alter(coord.y + 1, coord.x, player)
+            } else if (direction === 'up') {
+                this.alter(coord.y - 1, coord.x, player)
+            } else if (direction === 'left') {
+                this.alter(coord.y, coord.x - 1, player)
+            } else if (direction === 'right') {
+                this.alter(coord.y, coord.x + 1, player)
+            }
+            this.alter(coord.y, coord.x, '.')
         }
-        this.alter(coord.y, coord.x, '.')
+
     }
 
-    moveValue(player, direction){
+    cellValue(player, direction) {
         let coord = super.findCoordinate(player)
-        let checkCoord = {y: coord.y, x: coord.x}
-        if(direction === 'down'){
-            checkCoord.y++   
+        let checkCoord = { y: coord.y, x: coord.x }
+        if (direction === 'down') {
+            checkCoord.y++
         }
-        if(direction === 'up'){
+        if (direction === 'up') {
             checkCoord.y--
         }
-        if(direction === 'left'){
+        if (direction === 'left') {
             checkCoord.x--
         }
-        if(direction === 'right'){
+        if (direction === 'right') {
             checkCoord.x++
         }
-        return this.getMatrix(checkCoord.y, checkCoord.x)
-        
+        return this.getMatrixCell(checkCoord.y, checkCoord.x)
+
     }
 
-    checkMoveValue(player, direction) {
-        if(this.moveValue(player, direction) == 'c'){
+    checkCellValue(player, direction) {
+        if (this.cellValue(player, direction) == 'c') {
             player === 1 ? player = this.player1 : player = this.player2
             player.score += 10
+        }
+    }
+
+    checkBoundries(player, direction) {
+        let playerPosition = this.cellValue(player, direction)
+        if (playerPosition == 'c' || playerPosition == '.') {
+            return true
         }
     }
 

@@ -1,5 +1,4 @@
 
-// const board = new GoldRush(5,5)
 const renderer = new Renderer()
 
 const startGame = function() {

@@ -14,7 +14,7 @@ class Matrix {
         return this.matrix
     }
 
-    getMatrix(rowNum, colNum) {
+    getMatrixCell(rowNum, colNum) {
         return this.matrix[rowNum][colNum]
     }
 

@@ -2,6 +2,7 @@ class Renderer {
     constructor() {
 
     }
+    
     renderBoard(gameBoard) {
         $('#game-board').empty()
         $('#game-board').css(`grid-template-columns`, `repeat(${gameBoard.matrix[0].length}, 1fr)`)
