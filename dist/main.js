@@ -7,6 +7,7 @@ const startGame = function() {
    const gameBoard = new GoldRush(rowNum, colNum)
    renderer.renderBoard(gameBoard)
    renderer.renderScores(gameBoard)
+   renderer.renderTimer(rowNum, colNum, gameBoard)
 
    $(document).keydown(function (event){
       if (event.code == 'KeyS') {

@@ -98,6 +98,16 @@ class GoldRush extends Matrix {
         }
     }
 
+    endGame(){
+        let winner
+        if(this.player1.score > this.player2.score){
+            winner = this.player1
+        }else if(this.player2.score > this.player1.score){
+            winner = this.player2
+        }
+
+        return winner
+
 }
 
-
+}

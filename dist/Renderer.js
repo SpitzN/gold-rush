@@ -2,7 +2,7 @@ class Renderer {
     constructor() {
 
     }
-    
+
     renderBoard(gameBoard) {
         $('#game-board').empty()
         $('#game-board').css(`grid-template-columns`, `repeat(${gameBoard.matrix[0].length}, 1fr)`)
@@ -10,7 +10,7 @@ class Renderer {
             for (let j = 0; j < gameBoard.matrix[i].length; j++) {
                 const cellClass = this.fetchCellClass(gameBoard.matrix[i][j])
                 $('#game-board').append(`<div class='box'><div class='${cellClass}'></div></div>`)
-                
+
             }
         }
     }
@@ -25,7 +25,7 @@ class Renderer {
     fetchCellClass(value) {
         switch (value) {
             case 1:
-                value ='player1'
+                value = 'player1'
                 break;
             case 2:
                 value = 'player2'
@@ -43,4 +43,20 @@ class Renderer {
         return value
     }
 
+    renderTimer(rowNum, colNum, gameBoard) {
+        let sec = 0
+        let maxSec = rowNum * colNum
+        let timeout = setInterval(gameTimer, 1000)
+        function gameTimer() {
+            if(sec < maxSec){
+                sec++
+                $("#timer").html(`${sec}`)
+            } else {
+              let winner = gameBoard.endGame()
+              $("#timer").empty().html(`Player${winner._id} wins the game, Score: ${winner.score}`)
+                clearInterval(timeout)
+            }
+        }
+    }
 }
+
